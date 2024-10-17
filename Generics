@@ -1,5 +1,5 @@
 Generics:
-Example (with Generics):
+Example :
 import java.util.ArrayList;
 
 public class Main {
