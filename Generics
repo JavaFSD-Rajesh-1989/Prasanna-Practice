@@ -1,0 +1,126 @@
+Generics:
+Example (with Generics):
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();  // Type safety
+        list.add("Hello");
+        // list.add(123);  // Compilation error - only Strings allowed
+        String str = list.get(0);  // No casting needed
+    }
+}
+
+Generic Class:
+Syntax:
+class ClassName<T> {
+    // T is a type parameter
+}
+Example:
+
+class Box<T> {  // T is a generic type
+    private T content;
+
+    public void setContent(T content) {
+        this.content = content;
+    }
+
+    public T getContent() {
+        return content;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Box<String> stringBox = new Box<>();  // String type
+        stringBox.setContent("Hello");
+        System.out.println(stringBox.getContent());  // Outputs: Hello
+
+        Box<Integer> intBox = new Box<>();  // Integer type
+        intBox.setContent(123);
+        System.out.println(intBox.getContent());  // Outputs: 123
+    }
+}
+
+ Generic Methods:
+Syntax:
+<T> ReturnType methodName(T param) {
+    // Method body
+}
+Example:
+public class Main {
+    // Generic method
+    public static <T> void printArray(T[] array) {
+        for (T element : array) {
+            System.out.println(element);
+        }
+    }
+
+    public static void main(String[] args) {
+        Integer[] intArray = {1, 2, 3, 4, 5};
+        String[] strArray = {"A", "B", "C"};
+
+        printArray(intArray);  // Works with Integer array
+        printArray(strArray);  // Works with String array
+    }
+}
+
+Diamond Operator :
+Example :
+ArrayList<String> list = new ArrayList<>();  // Type inferred from the left side
+
+Parameterized Type:
+Example:
+Box<String> stringBox = new Box<>();  // Parameterized type is String
+Box<Integer> intBox = new Box<>();  // Parameterized type is Integer
+In this example, Box<String> and Box<Integer> are parameterized types.
+
+Inheritance Impact in Generics:
+Example (Incorrect use):
+List<Object> objList = new ArrayList<String>();  // Compilation error
+Solution: Use wildcards to allow more flexibility.
+? extends T: Allows reading from a generic type but restricts modification. You can pass a list of T or any subclass of T.
+? super T: Allows writing to a generic type but restricts reading. You can pass a list of T or any superclass of T.
+
+Example with Wildcards:
+public void printList(List<? extends Number> list) {
+    for (Number number : list) {
+        System.out.println(number);
+    }
+}
+
+public static void main(String[] args) {
+    List<Integer> intList = Arrays.asList(1, 2, 3);
+    List<Double> doubleList = Arrays.asList(1.1, 2.2, 3.3);
+    
+    printList(intList);  // Works with Integer
+    printList(doubleList);  // Works with Double
+}
+
+ Type Inference:
+Example :
+public class Main {
+    // Generic method
+    public static <T> void print(T item) {
+        System.out.println(item);
+    }
+
+    public static void main(String[] args) {
+        print(123);  // Type inferred as Integer
+        print("Hello");  // Type inferred as String
+    }
+}
+
+Example of Type Inference with the Diamond Operator:
+
+List<String> list = new ArrayList<>();  // Type inference by diamond operator
+Here, the compiler infers that ArrayList is of type String based on the type declaration on the left side (List<String>).
+
+***
+Generics allow you to write classes, interfaces, and methods that can work with any type while ensuring type safety.
+Generic Class: A class that can be parameterized with types.
+Generic Method: A method that can operate on any type, with the type determined at runtime.
+Diamond Operator (<>): Simplifies the instantiation of generic classes by allowing type inference.
+Parameterized Type: The actual type provided for a generic class or method when it is instantiated or invoked.
+Inheritance in Generics: Generic types do not directly support inheritance, but wildcards (? extends, ? super) provide flexibility.
+Type Inference: The ability of the compiler to infer the type of generic parameters based on the context.
