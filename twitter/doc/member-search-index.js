@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"com.twitter.view","c":"View","l":"main(String[])","u":"main(java.lang.String[])"},{"p":"com.twitter.view","c":"View","l":"View()","u":"%3Cinit%3E()"}];updateSearchResults();
