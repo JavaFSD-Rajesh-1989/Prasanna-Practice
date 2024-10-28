@@ -1,0 +1,205 @@
+//Array List
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+public class Demo {
+    public static void main(String[] args){   
+    	
+//    	Collection<Integer> nums= new ArrayList<Integer>();
+//  	Collection nums=new ArrayList();
+    	List<Integer> nums=new ArrayList<Integer>();
+    	nums.add(6);
+    	nums.add(5);
+    	nums.add(8);
+    	nums.add(2);
+    	//nums.add("5");
+    	
+    	System.out.println(nums.get(2));
+    	
+    	System.out.println(nums.indexOf(2));
+    	
+//    	for(int n:nums)
+//    	{
+//    		System.out.println(nums);	
+//    	}
+    	for(Object n:nums)
+    	{
+    		int num=(Integer)n;
+    		System.out.println(nums);	
+    	}
+    }
+}
+
+//SETS
+import java.util.Set;
+import java.util.HashSet;
+import java.util.TreeSet;
+import java.util.Collection;
+import java.util.Iterator;
+
+/*
+import java.util.List;
+import java.util.ArrayList;
+
+public class Demo {
+    public static void main(String[] args){   
+    	
+    	List<Integer> nums=new ArrayList<Integer>();
+    	nums.add(6);
+    	nums.add(5);
+    	nums.add(8);
+    	nums.add(2);
+    	nums.add(6);
+    	//nums.add("5");
+    	
+		
+    	for(Object n:nums)
+    	{
+    		int num=(Integer)n;
+    		System.out.println(num+2);
+    	}
+    }
+}
+*/
+
+
+public class Demo {
+    public static void main(String[] args){   
+    	
+//    	Set<Integer> nums=new HashSet<Integer>();  	
+//    	Set<Integer> nums=new TreeSet<Integer>();
+    	Collection<Integer> nums=new TreeSet<Integer>();
+    	nums.add(62);
+    	nums.add(54);
+    	nums.add(82);
+    	nums.add(21);
+    	
+    	//nums.add("5");
+    	
+    	Iterator<Integer> values = nums.iterator();
+    	
+    	while(values.hasNext())
+    		System.out.println(values.next());
+    	
+//    	for(int n:nums)
+//    	{
+//    		System.out.println(n);
+//   	}
+    }
+}
+
+
+//MAP
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Hashtable;
+
+public class Demo {
+    public static void main(String[] args){   
+    	
+//    	Map<String, Integer> students=new HashMap<>();
+    	Map<String, Integer> students=new Hashtable<>();
+    	
+    	students.put("Navin",56);
+    	students.put("Harsh",23);
+    	students.put("Sushil",67);
+    	students.put("Kiran",92);
+    	students.put("Harsh",45);
+    	
+    	System.out.println(students.keySet());
+    	
+    	for(String key : students.keySet())
+    	{
+    		System.out.println(key + ":" + students.get(key));
+    	}
+    	
+    }
+}
+
+
+//Comparator vs Comparable
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Comparator;
+
+
+//class Student implements Comparable<Student>
+class Student
+{
+	int age;
+	String name;
+	
+	public Student(int age, String name)
+	{
+		this.age=age;
+		this.name=name;
+	}
+	
+	public String toString() {
+		return "Student [age=" + age + ", name=" +name +"]";
+	}
+	
+//	public int CompareTo(Student that)
+//	{
+////		return 0;
+//		if(this.age >that.age)
+//			return 1;
+//		else
+//			return -1;
+//	}
+}
+	
+
+public class Demo {
+    public static void main(String[] args){   
+    	
+//    	Comparator<Integer> com=new Comparator<Integer>()
+//    	{
+//    		public int compare(Integer i,Integer j)
+//    		{
+//    			if(i%10 >j%10)
+//    				return 1;
+//    			else
+//    				return -1;
+//    		}
+//    	};	
+    	
+//    	List<Integer> nums= new ArrayList<>();
+//    	nums.add(43);
+//    	nums.add(31);
+//    	nums.add(72);
+//    	nums.add(29);
+    	
+//    	Comparator<Student> com=new Comparator<Student>()
+//    	{
+//    		public int compare(Student i,Student j)
+//    		{
+//    			if(i.age >j.age)
+//    				return 1;
+//    			else
+//    				return -1;
+//    		}
+//    	};	
+    	
+    	Comparator<Student> com=(i,j) -> i.age > j.age?1:-1;
+     	
+    	List<Student> studs= new ArrayList<>();
+    	studs.add(new Student(21,"Navin"));
+    	studs.add(new Student(12,"John"));
+    	studs.add(new Student(18,"Parul"));
+    	studs.add(new Student(20,"Kiran"));
+    	
+//    	Collections.sort(nums);
+//    	System.out.println(nums);
+    	
+    	for(Student s:studs)
+    		System.out.println();
+    	
+    	Collections.sort(studs);
+    	for(Student s: studs)
+    		System.out.println(s);
+    }
+}
+
