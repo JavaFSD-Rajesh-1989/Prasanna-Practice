@@ -21,6 +21,8 @@ public class RevStr {
 //		STRING BUFFER
 		StringBuffer sbuffer=new StringBuffer(s);
 		System.out.println("string buffer:"+sbuffer.reverse());
+		
+	
 	}
 
 	private static String reverse(String s) {
